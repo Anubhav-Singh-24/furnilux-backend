@@ -52,7 +52,7 @@ export const loginUser = async(req,res)=>{
         res.cookie('refreshToken',refreshToken,{
             httpOnly:true,
             sameSite:'none',
-            secure:'true'
+            secure:'false'
         })
         res.status(200).json({accessToken,name:user.name})
     } catch (error) {
