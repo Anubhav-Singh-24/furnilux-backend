@@ -6,12 +6,12 @@ import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 
 const app = express();
+app.use(helmet());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: "https://furni-lux.netlify.app", credentials: true }));
 app.use(cookieParser())
-app.use(helmet());
 
 const PORT = process.env.PORT || 3000;
 
