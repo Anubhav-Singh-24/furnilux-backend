@@ -51,7 +51,7 @@ export const signupUser = async (req, res) => {
     const { name, email, password,token } = req.body;
     const success = await validateCaptcha(token);
     if (!success) {
-      res.status(500).json({ msg: "Captcha Validation failed" });
+      return res.status(500).json({ msg: "Captcha Validation failed" });
     }
     const user = await User.findOne({ email });
     if (user) {
@@ -71,7 +71,7 @@ export const loginUser = async (req, res) => {
     const { email, password, token } = req.body;
     const success = await validateCaptcha(token);
     if (!success) {
-      res.status(500).json({ msg: "Captcha Validation failed" });
+      return res.status(500).json({ msg: "Captcha Validation failed" });
     }
     const user = await User.findOne({ email });
     if (!user) {
