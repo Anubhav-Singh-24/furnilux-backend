@@ -49,7 +49,7 @@ const validateCaptcha = async (token) => {
 export const signupUser = async (req, res) => {
   try {
     const { name, email, password,token } = req.body;
-    const success = validateCaptcha(token);
+    const success = await validateCaptcha(token);
     if (!success) {
       res.status(500).json({ msg: "Captcha Validation failed" });
     }
@@ -69,7 +69,7 @@ export const signupUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const { email, password, token } = req.body;
-    const success = validateCaptcha(token);
+    const success = await validateCaptcha(token);
     if (!success) {
       res.status(500).json({ msg: "Captcha Validation failed" });
     }
